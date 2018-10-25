@@ -841,7 +841,7 @@ findCourseById = courseId =>
             }
         }
     }
-    static login = user =>{
+    static register = user =>{
     let url ="http://localhost:9090/api/register";
     return fetch(url,{
         method:'POST',
@@ -851,6 +851,18 @@ findCourseById = courseId =>
             'Content-Type':'application/json'
         }
     }).then(response => response.json())
+    }
+
+    static login = user =>{
+        let url ="http://localhost:9090/api/login";
+        return fetch(url,{
+            method:'POST',
+            credentials: 'include',
+            body: JSON.stringify(user),
+            headers:{
+                'Content-Type':'application/json'
+            }
+        }).then(response => response.json())
     }
 
     static moveDown = (forTopic, forWidget) => {

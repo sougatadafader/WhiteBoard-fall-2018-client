@@ -1,9 +1,10 @@
 import React from 'react'
 import {Component} from "react";
-import {Link} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 import CourseService from "../services/CourseService";
+import { Redirect } from 'react-router-dom';
 
-export default class Login extends Component {
+class Login extends Component {
 
     constructor(props){
         super(props);
@@ -11,7 +12,7 @@ export default class Login extends Component {
         this.state={
             username:'',
             password:'',
-            currentUser:{}
+            currentUser:{},
         }
     }
     handleClickEvent = event => {
@@ -24,9 +25,9 @@ export default class Login extends Component {
         {
             CourseService.login(credentials)
                 .then(
-                user=>{console.log(user); return(this.setState({
-                    currentUser: user
-                }))})}};
+                    user=>{console.log(user); return(this.setState({
+                        currentUser: user
+                    }))})}};
 
     render(){
         return(
@@ -41,9 +42,7 @@ export default class Login extends Component {
 
                             <label className="col-sm-2 col-form-label">Username</label>
                             <input type="username" className="form-control col-sm-10" id="inputEmail" placeholder="Username" value={this.state.username}
-                                   onChange = {(event) => this.setState({username:event.target.value})}
-                            />
-
+                                   onChange = {(event) => this.setState({username:event.target.value})}/>
                         </div>
 
                         <div className="form-group row">
@@ -64,3 +63,4 @@ export default class Login extends Component {
         );
     }
 }
+export default withRouter(Login);
