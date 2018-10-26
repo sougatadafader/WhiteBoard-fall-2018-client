@@ -9,6 +9,7 @@ import CourseAdd from "../components/CourseAdd";
 import NavigationDefault from "../components/NavigationDefault";
 import NavigationTable from "../components/NavigationTable";
 import NavigationGrid from "../components/NavigationGrid";
+import Profile from "../components/Profile";
 
 export default class WhiteBoard extends Component {
 
@@ -58,6 +59,10 @@ export default class WhiteBoard extends Component {
                 
                 <Router>
                     <div className="mt-5 pt-3">
+                        <Route path="/profile"
+                               render={() =>
+                                   <Profile/>
+                               }/>
                         <Route path="/course/table"
                                render={() =>
                                     <div>

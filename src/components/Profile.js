@@ -37,7 +37,7 @@ export default class Profile extends Component {
         return(
             <div className="card text-center m-5">
                 <div className="card-header">
-                    Registration Form
+                    Update your Profile
                 </div>
                 <div className="card-body">
                     <form id="Login">
@@ -58,8 +58,8 @@ export default class Profile extends Component {
                             <label className="col-sm-2 col-form-label">Password</label>
                             <input type="password" className="form-control col-sm-10" id="inputPassword" placeholder="Password" onChange = {(event) => this.setState({password:event.target.value})}/>
                         </div>
-                        <Link to={"/"}><button type="submit" className="btn btn-primary mr-2">Login</button></Link>
-                        <button onClick={(event) => this.handleClickEvent(event)}  type="submit" className="btn btn-primary ml-2">Register</button>
+
+                        <button onClick={(event) => this.handleClickEvent(event)}  type="submit" className="btn btn-primary ml-2">Update</button>
                     </form>
                 </div>
                 <div className="card-footer text-muted">

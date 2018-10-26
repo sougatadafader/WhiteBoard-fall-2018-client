@@ -29,6 +29,13 @@ export default class UserService {
             .then(response =>
                 response.json())};
 
+    static profile = () => {
+        let url ="http://localhost:9090/api/profile";
+        return fetch(url)
+            .then(response =>
+                response.json())};
+
+
     static logout =() =>{
         let url ="http://localhost:9090/api/logout";
         fetch(url)
