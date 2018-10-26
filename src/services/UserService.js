@@ -1,6 +1,6 @@
 export default class UserService {
     static register = user =>{
-        let url ="http://localhost:9090/api/register";
+        let url ="https://ancient-waters-60816.herokuapp.com/api/register";
         return fetch(url,{
             method:'POST',
             credentials: 'include',
@@ -12,7 +12,7 @@ export default class UserService {
     }
 
     static login = user =>{
-        let url ="http://localhost:9090/api/login";
+        let url ="https://ancient-waters-60816.herokuapp.com/api/login";
         return fetch(url,{
             method:'POST',
             credentials: 'include',
@@ -24,20 +24,20 @@ export default class UserService {
     }
 
     static findUserById = userId=>{
-        let url ="http://localhost:9090/api/user/{userId}";
+        let url ="https://ancient-waters-60816.herokuapp.com/api/user/{userId}";
         return fetch(url)
             .then(response =>
                 response.json())};
 
     static profile = () => {
-        let url ="http://localhost:9090/api/profile";
+        let url ="http://https://ancient-waters-60816.herokuapp.com/api/profile";
         return fetch(url)
             .then(response =>
                 response.json())};
 
 
     static logout =() =>{
-        let url ="http://localhost:9090/api/logout";
+        let url ="https://ancient-waters-60816.herokuapp.com/api/logout";
         fetch(url)
             .then(response =>
                 response.json())};
