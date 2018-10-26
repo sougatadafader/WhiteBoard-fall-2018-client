@@ -700,17 +700,35 @@ export default class CourseService {
             .then(response =>
                 response.json());
 
-    createCourse = course =>
-        fetch(COURSE_API_URL, {
+    createCourse = course => {
+        return fetch(COURSE_API_URL, {
             body: JSON.stringify(course),
             headers: {
-                'Content-Type': 'application/json' },
+                'Content-Type': 'application/json'
+            },
             method: 'POST'
         }).then(response =>
             response.json());
+    }
+    static deleteCourse = (cid )=>{
+        let url ="http://localhost:9090/api/course/{cid}";
+        fetch(url)
+            .then(response =>
+                response.json())};
+
+    static updateCourse = (cid,course) => {
+        return fetch(COURSE_API_URL, {
+            body: JSON.stringify(course),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'PUT'
+        }).then(response =>
+            response.json());
+    }
 
 
-findCourseById = courseId =>
+    findCourseById = courseId =>
         courses = courses.filter(
             course => course.id === courseId
         )
