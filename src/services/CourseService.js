@@ -693,12 +693,13 @@ let courses = [
         ]
     }
 ]
-let COURSE_API_URL = 'https://ancient-waters-60816.herokuapp.com/api/course';
+    let COURSE_API_URL = 'http://localhost:9090/api/course';
 export default class CourseService {
     findAllCourses = () =>
         fetch(COURSE_API_URL)
             .then(response =>
                 response.json());
+
     createCourse = course =>
         fetch(COURSE_API_URL, {
             body: JSON.stringify(course),
@@ -841,29 +842,7 @@ findCourseById = courseId =>
             }
         }
     }
-    static register = user =>{
-    let url ="http://localhost:9090/api/register";
-    return fetch(url,{
-        method:'POST',
-        credentials: 'include',
-        body: JSON.stringify(user),
-        headers:{
-            'Content-Type':'application/json'
-        }
-    }).then(response => response.json())
-    }
 
-    static login = user =>{
-        let url ="http://localhost:9090/api/login";
-        return fetch(url,{
-            method:'POST',
-            credentials: 'include',
-            body: JSON.stringify(user),
-            headers:{
-                'Content-Type':'application/json'
-            }
-        }).then(response => response.json())
-    }
 
     static moveDown = (forTopic, forWidget) => {
         for(let c in courses) {

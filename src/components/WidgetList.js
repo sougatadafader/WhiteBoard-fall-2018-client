@@ -130,7 +130,7 @@ class WidgetList extends Component {
                                         <option value="PARAGRAPH">Paragraph</option>
                                         <option value="LIST" >List</option>
                                         <option value="IMAGE" >Image</option>
-                                        <option value="LINK">Link</option>
+                                        <option value="LINK">LincreateWidgetk</option>
                                     </select>
                                     <button
                                         onClick={() => this.props.deleteWidget(widget)}

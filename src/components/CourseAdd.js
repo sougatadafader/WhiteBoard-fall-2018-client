@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import CourseService from "../services/CourseService";
 
 export default class CourseAdd extends Component {
     constructor(props) {
@@ -11,16 +12,26 @@ export default class CourseAdd extends Component {
         this.setState({
             title: 'New Course'
         })
+    handleClickEvent = event => {
+        event.preventDefault();
+        let course = {
+            title: this.state.title
+        }
+            this.props.addCourse(course)
+        };
 
     render() {
         return(
             <div className="row">
                 <input
-                    onChange={this.updateForm}
+                    onChange = {(event) => this.setState({title:event.target.value})}
                     id="Course-input"
                     className="form-control col-md-10 col-sm-6 col-9 mt-1"/>
                 <button
-                    onClick={() => this.props.addCourse({
+                    onClick={(event) => this.handleClickEvent(event)}
+
+
+                        /*() => this.props.addCourse({
                         id: (new Date()).getTime() + '',
                         title: this.state.title,
                         modules:[
@@ -47,7 +58,7 @@ export default class CourseAdd extends Component {
                                             }
                                         ]
                                     }]}]
-                    })}
+                    })*/
                     className="btn btn-primary fa-2x fa fa-plus col-md-2 col-sm-3 col-3"></button>
             </div>
         )

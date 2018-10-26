@@ -3,7 +3,7 @@ import {Component} from "react";
 import {Link} from 'react-router-dom'
 import UserService from "../services/UserService";
 
-export default class Register extends Component {
+export default class Profile extends Component {
     constructor(props){
         super(props);
         this.userService = new UserService();
@@ -25,7 +25,7 @@ export default class Register extends Component {
         }
         if(credentials.username && credentials.password)
         {
-            UserService.register(credentials)
+            UserService.profile(credentials)
                 .then(
                     user=>{console.log(user); return(this.setState({
                         currentUser: user

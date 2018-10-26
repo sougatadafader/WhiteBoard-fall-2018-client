@@ -15,6 +15,7 @@ ReactDOM.render(
             <div>
             <Route exact path="/" render={() => <Login/>}/>
             <Route path="/Register" render={() => <Register/>}/>
+            <WhiteBoard/>
             </div>
         </Router>
     </div>,

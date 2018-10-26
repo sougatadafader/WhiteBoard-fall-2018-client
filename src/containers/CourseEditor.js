@@ -4,31 +4,30 @@ import {Route} from 'react-router-dom'
 import LessonTabs from "../components/LessonTabs";
 import {Link} from 'react-router-dom'
 import TopicPills from "../components/TopicPills";
-import WidgetList from "../components/WidgetList";
+//import WidgetList from "../components/WidgetList";
 
-import WidgetReducer from '../reducers/WidgetReducer'
-import WidgetListContainer from '../containers/WidgetListContainer'
+//import WidgetReducer from '../reducers/WidgetReducer'
+//import WidgetListContainer from '../containers/WidgetListContainer'
 
-import {createStore} from 'redux'
-import {Provider} from 'react-redux'
+//import {createStore} from 'redux'
+//import {Provider} from 'react-redux'
 
-const store= createStore(WidgetReducer)
+//const store= createStore(WidgetReducer)
 
 export default class CourseEditor extends Component {
     constructor(props) {
         super(props);
-
         // retrieve courseId from the URL path parameter 'courseId'
         // the props.match.params is part of the Route library which
         // parses the URL path and names the parameters and creates
         // the params map
         const courseId = this.props.match.params.courseId;
-
+        console.log(this.props)
         // use courseId to find the course object from the
         // courses array passed in as a property
-
+        console.log(this.props.courses)
         const course = this.props.courses.find(
-            course => course.id === courseId);
+            course => course.id === parseInt(courseId));
         const selectedModule = course.modules[0];
         const selectedLesson = selectedModule.lessons[0];
         const selectedTopic = selectedLesson.topics[0]
@@ -434,12 +433,12 @@ export default class CourseEditor extends Component {
                             createWidget = {this.props.createWidget}
                         />
                         <br/>
-                        <Provider store={store}>
+                        {/*<Provider store={store}>
                             <WidgetListContainer
                                 widgetsInit={this.state.selectedTopic.widgets}
                                 topic={this.state.selectedTopic}
                                 />
-                        </Provider>
+                        </Provider>*/}
                         {/*<WidgetList widgets={this.props.findWidgets(this.state.selectedTopic)}
                                     createWidget = {this.props.createWidget}
                         />*/ }

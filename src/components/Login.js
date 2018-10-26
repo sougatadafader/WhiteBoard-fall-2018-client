@@ -1,14 +1,14 @@
 import React from 'react'
 import {Component} from "react";
 import {Link, withRouter} from 'react-router-dom';
-import CourseService from "../services/CourseService";
+import UserService from "../services/UserService";
 import { Redirect } from 'react-router-dom';
 
 class Login extends Component {
 
     constructor(props){
         super(props);
-        this.courseService = new CourseService();
+        this.userService = new UserService();
         this.state={
             username:'',
             password:'',
@@ -23,11 +23,14 @@ class Login extends Component {
         }
         if(credentials.username && credentials.password)
         {
-            CourseService.login(credentials)
+            UserService.login(credentials)
                 .then(
                     user=>{console.log(user); return(this.setState({
                         currentUser: user
-                    }))})}};
+                    }))})
+                    window.location.href="/course/grid"
+
+        }};
 
     render(){
         return(
