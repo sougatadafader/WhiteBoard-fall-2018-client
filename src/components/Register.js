@@ -30,7 +30,8 @@ export default class Register extends Component {
                     user=>{console.log(user); return(this.setState({
                         currentUser: user
                     }))})
-            window.location.href="/course/grid";
+            //window.location.href="/course/grid";
+            alert('Registered')
         }};
 
     render(){
