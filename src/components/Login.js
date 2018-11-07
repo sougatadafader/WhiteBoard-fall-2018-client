@@ -3,36 +3,28 @@ import {Component} from "react";
 import {Link, withRouter} from 'react-router-dom';
 import UserService from "../services/UserService";
 import { Redirect } from 'react-router-dom';
+import CourseService from "../services/CourseService";
 
 class Login extends Component {
 
     constructor(props){
         super(props);
+        this.courseService = new CourseService();
         this.userService = new UserService();
         this.state={
             username:'',
             password:'',
             currentUser:{},
+            toDashboard: false,
+            courses:{}
         }
     }
-    handleClickEvent = event => {
-        event.preventDefault();
-        let credentials = {
-            username: this.state.username.trim(),
-            password: this.state.password.trim()
-        }
-        if(credentials.username && credentials.password)
-        {
-            UserService.login(credentials)
-                .then(
-                    user=>{console.log(user); return(this.setState({
-                        currentUser: user
-                    }))})
-                    window.location.href="/course/grid"
 
-        }};
+
 
     render(){
+
+
         return(
             <div className="card text-center m-5">
                 <div className="card-header">
@@ -54,9 +46,9 @@ class Login extends Component {
                                    onChange = {(event) => this.setState({password:event.target.value})}
                             />
                         </div>
-                        <button onClick={(event) => this.handleClickEvent(event)} className="btn btn-primary mr-2">Login</button>
-                        <Link to={"/register"}><button
-                            className="btn btn-primary ml-2">Register</button></Link>
+                        <a onClick={(event) => this.props.login(this.state.username,this.state.password)} className="btn btn-primary mr-2">Login</a>
+                        <Link to={"/register"}><a
+                            className="btn btn-primary ml-2">Register</a></Link>
                     </form>
                 </div>
                 <div className="card-footer text-muted">

@@ -693,13 +693,14 @@ let courses = [
         ]
     }
 ]
-    let COURSE_API_URL = 'https://ancient-waters-60816.herokuapp.com/api/course';
+    let COURSE_API_URL = 'http://localhost:9090/api/course';
+    let COURSE_MOD_API_URL ="http://localhost:9090/api/course/{cid}";
 export default class CourseService {
-    findAllCourses = () =>
-        fetch(COURSE_API_URL)
+    findAllCourses = () => {
+        return fetch(COURSE_API_URL)
             .then(response =>
                 response.json());
-
+    }
     createCourse = course => {
         return fetch(COURSE_API_URL, {
             body: JSON.stringify(course),
@@ -711,20 +712,19 @@ export default class CourseService {
             response.json());
     }
     static findCourseById = (cid )=>{
-        let url ="https://ancient-waters-60816.herokuapp.com/api/course/{cid}";
-        fetch(url)
+        fetch(COURSE_MOD_API_URL)
             .then(response =>
                 response.json())};
 
     static deleteCourse = (cid )=>{
-        let url ="https://ancient-waters-60816.herokuapp.com/api/course/{cid}";
-        fetch(url)
+
+        fetch(COURSE_MOD_API_URL)
             .then(response =>
                 response.json())};
 
     static updateCourse = (cid,course) => {
-        let url ="https://ancient-waters-60816.herokuapp.com/api/course/{cid}";
-        return fetch(url, {
+
+        return fetch(COURSE_MOD_API_URL, {
             body: JSON.stringify(course),
             headers: {
                 'Content-Type': 'application/json'

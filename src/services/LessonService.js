@@ -1,13 +1,13 @@
 export default class LessonService {
     static findAllLessons = (mId) =>{
-        let url ="https://ancient-waters-60816.herokuapp.com/api/module/{mId}/lesson";
+        let url ="http://localhost:9090/api/module/{mId}/lesson";
         return fetch(url)
             .then(response =>
                 response.json())};
 
     static createLesson = (lesson,mid )=>{
 
-        let url ="https://ancient-waters-60816.herokuapp.com/api/module/{mId}/lesson";
+        let url ="http://localhost:9090/api/module/{mId}/lesson";
         return fetch(url,{
             method:'POST',
             credentials: 'include',
@@ -19,13 +19,13 @@ export default class LessonService {
     }
     static findLessonById = (lid )=>{
 
-        let url ="https://ancient-waters-60816.herokuapp.com/api/topic/{lid}";
+        let url ="http://localhost:9090/api/topic/{lid}";
         return fetch(url)
             .then(response =>
                 response.json())};
 
     static updateLesson = (lid,topic) => {
-        let url ="https://ancient-waters-60816.herokuapp.com/api/lesson/{lid}";
+        let url ="http://localhost:9090/api/lesson/{lid}";
         return fetch(url, {
             body: JSON.stringify(topic),
             headers: {
@@ -37,7 +37,7 @@ export default class LessonService {
     }
 
     static deleteLesson = (lid )=>{
-        let url ="https://ancient-waters-60816.herokuapp.com/api/lesson/{lid}";
+        let url ="http://localhost:9090/api/lesson/{lid}";
         fetch(url)
             .then(response =>
                 response.json())};
