@@ -59,7 +59,7 @@ export default class Register extends Component {
                             <label className="col-sm-2 col-form-label">Password</label>
                             <input type="password" className="form-control col-sm-10" id="inputPassword" placeholder="Password" onChange = {(event) => this.setState({password:event.target.value})}/>
                         </div>
-                        <Link to={"/"}><button type="submit" className="btn btn-primary mr-2">Login</button></Link>
+                        <Link to={"/login"}><button type="submit" className="btn btn-primary mr-2">Login</button></Link>
                         <button onClick={(event) => this.handleClickEvent(event)}  type="submit" className="btn btn-primary ml-2">Register</button>
                     </form>
                 </div>
