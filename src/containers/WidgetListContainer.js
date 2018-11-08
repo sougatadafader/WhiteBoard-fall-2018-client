@@ -35,7 +35,7 @@ const dispatcherToPropertyMapper = dispatch =>({
         widget:widget
     }),
     loadWidgets: (topicId) => {
-        let url = "http://localhost:9090/api/topic/"
+        let url = "https://guarded-depths-89666.herokuapp.com/api/topic/"
         url += topicId
         url += "/widget"
         fetch(url,{
@@ -49,7 +49,7 @@ const dispatcherToPropertyMapper = dispatch =>({
             )
     },
     updateWidget: (widgetType,widgetId,widget) => {
-        let url = "http://localhost:9090/api/"
+        let url = "https://guarded-depths-89666.herokuapp.com/api/"
         url+=widgetType
         url += "/widget/"
         url += widgetId
@@ -68,7 +68,7 @@ const dispatcherToPropertyMapper = dispatch =>({
             )
     },
     deleteWidget: (wid,widgetType) => {
-        let url = "http://localhost:9090/api/"
+        let url = "https://guarded-depths-89666.herokuapp.com/api/"
         url+=widgetType
         url+="/widget/"
         url += wid
@@ -84,7 +84,7 @@ const dispatcherToPropertyMapper = dispatch =>({
             )
     },
     createWidget: (topicId,widgetType,widget) => {
-        let url = "http://localhost:9090/api/topic/"
+        let url = "https://guarded-depths-89666.herokuapp.com/api/topic/"
         url+=topicId
         url += "/widget/"
         url+=widgetType
@@ -103,7 +103,7 @@ const dispatcherToPropertyMapper = dispatch =>({
             )
     },
     findWidget: (widgetId,widgetType) => {
-        let url = "http://localhost:9090/api/"
+        let url = "https://guarded-depths-89666.herokuapp.com/api/"
         url += widgetType
         url += "/widget/"
         url += widgetId

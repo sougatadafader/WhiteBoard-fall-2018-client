@@ -27,14 +27,7 @@ export default class CourseTable extends Component {
                 response.json()).then(this.setState({}));*/
 
     }
-
-
-
-   /* componentDidUpdate = (prevProps) =>{
-        if(prevProps.courses != this.props.courses) {
-            this.findAllCourses();
-        }
-    }*/
+    
 
     findAllCourses =() =>this.courseService.findAllCourses().then(courses => this.setState({courses:courses,
         loggedInFlag:true}));
