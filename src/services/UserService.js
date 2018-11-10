@@ -1,7 +1,7 @@
 
 export default class UserService {
     static register = user =>{
-        let url ="https://guarded-depths-89666.herokuapp.com/api/register";
+        let url ="http://localhost:9090/api/register";
         return fetch(url,{
             method:'POST',
             credentials: 'include',
@@ -13,7 +13,7 @@ export default class UserService {
     }
 
     static login = user =>{
-        let url ="https://guarded-depths-89666.herokuapp.com/api/login";
+        let url ="http://localhost:9090/api/login";
         return fetch(url,{
             method:'POST',
             credentials: 'include',
@@ -25,13 +25,15 @@ export default class UserService {
     }
 
     static findUserById = userId=>{
-        let url ="https://guarded-depths-89666.herokuapp.com/api/user/{userId}";
-        return fetch(url)
+        let url ="http://localhost:9090/api/user/{userId}";
+        return fetch(url,{
+            credentials: 'include'
+        })
             .then(response =>
                 response.json())};
 
     static profile = () => {
-        let url ="https://guarded-depths-89666.herokuapp.com/api/profile";
+        let url ="http://localhost:9090/api/profile";
         return fetch(url, {
             credentials: 'include'
         })
@@ -40,7 +42,7 @@ export default class UserService {
 
 
     static logout =() =>{
-        let url ="https://guarded-depths-89666.herokuapp.com/api/logout";
+        let url ="http://localhost:9090/api/logout";
         fetch(url, {
             credentials: 'include'
         })

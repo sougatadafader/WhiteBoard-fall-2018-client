@@ -32,7 +32,7 @@ export default class WhiteBoard extends Component {
     componentDidMount = () =>{}
         //this.findAllCourses();
 
-    //findAllCourses =() =>this.courseService.findAllCourses().then(courses => this.setState({courses:courses,loggedInFlag:true}));
+    findAllCourses =() =>this.courseService.findAllCourses().then(courses => this.setState({courses:courses,loggedInFlag:true}));
 
 
     loginFunc =() =>{
@@ -53,9 +53,7 @@ export default class WhiteBoard extends Component {
                 .then(
                     user=>{console.log(user); (this.setState({
                         currentUser: user
-                    }))}).then(() => this.setState(() => ({
-                toDashboard: true
-            }))).then(this.setState({loggedInFlag:true}))
+                    }))}).then(this.findAllCourses)
             /*window.location.href="/Home"*/
 
         }};

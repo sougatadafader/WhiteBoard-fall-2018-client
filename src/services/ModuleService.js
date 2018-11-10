@@ -1,13 +1,13 @@
 export default class ModuleService {
     static findAllModules = (courseId) =>{
-        let MODULE_API_URL ="https://guarded-depths-89666.herokuapp.com/api/course/{courseId}/module";
+        let MODULE_API_URL ="http://localhost:9090/api/course/{courseId}/module";
         return fetch(MODULE_API_URL)
             .then(response =>
                 response.json())};
 
     static createModule = (module,courseId )=>{
 
-        let url ="https://guarded-depths-89666.herokuapp.com/api/course/{courseId}/module";
+        let url ="http://localhost:9090/api/course/{courseId}/module";
         return fetch(url,{
             method:'POST',
             credentials: 'include',
@@ -19,13 +19,15 @@ export default class ModuleService {
     }
     static findModuleById = (mid )=>{
 
-        let url ="https://guarded-depths-89666.herokuapp.com/api/module/{mid}";
-        return fetch(url)
+        let url ="http://localhost:9090/api/module/{mid}";
+        return fetch(url, {
+            credentials: 'include'
+        })
             .then(response =>
                 response.json())};
 
     static updateModule = (mid,module) => {
-        let url ="https://guarded-depths-89666.herokuapp.com/api/module/{mid}";
+        let url ="http://localhost:9090/api/module/{mid}";
         return fetch(url, {
             body: JSON.stringify(module),
             headers: {
@@ -39,7 +41,7 @@ export default class ModuleService {
 
     static deleteModule = (mid )=>{
 
-        let url ="https://guarded-depths-89666.herokuapp.com/api/module/{mid}";
+        let url ="http://localhost:9090/api/module/{mid}";
         fetch(url)
             .then(response =>
                 response.json())};

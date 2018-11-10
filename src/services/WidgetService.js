@@ -8,7 +8,7 @@ export default class WidgetService {
 
     static createWidget = (widget, topicId) => {
 
-        let url = "https://guarded-depths-89666.herokuapp.com/api/topic/{topicId}/widget/heading";
+        let url = "http://localhost:9090/api/topic/{topicId}/widget/heading";
         return fetch(url, {
             method: 'POST',
             credentials: 'include',

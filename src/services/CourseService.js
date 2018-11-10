@@ -693,16 +693,19 @@ let courses = [
         ]
     }
 ]
-    let COURSE_API_URL = 'https://guarded-depths-89666.herokuapp.com/api/course';
-    let COURSE_MOD_API_URL ="https://guarded-depths-89666.herokuapp.com/api/course/{cid}";
+    let COURSE_API_URL = 'http://localhost:9090/api/course';
+    let COURSE_MOD_API_URL ="http://localhost:9090/api/course/{cid}";
 export default class CourseService {
     findAllCourses = () => {
-        return fetch(COURSE_API_URL)
+        return fetch(COURSE_API_URL,{
+            credentials: 'include'
+        })
             .then(response =>
                 response.json());
     }
     createCourse = course => {
         return fetch(COURSE_API_URL, {
+            credentials: 'include',
             body: JSON.stringify(course),
             headers: {
                 'Content-Type': 'application/json'
@@ -712,13 +715,17 @@ export default class CourseService {
             response.json());
     }
     static findCourseById = (cid )=>{
-        fetch(COURSE_MOD_API_URL)
+        fetch(COURSE_MOD_API_URL,{
+            credentials: 'include'
+        })
             .then(response =>
                 response.json())};
 
     static deleteCourse = (cid )=>{
 
-        fetch(COURSE_MOD_API_URL)
+        fetch(COURSE_MOD_API_URL,{
+            credentials: 'include'
+        })
             .then(response =>
                 response.json())};
 
@@ -727,6 +734,7 @@ export default class CourseService {
         return fetch(COURSE_MOD_API_URL, {
             body: JSON.stringify(course),
             headers: {
+                credentials: 'include',
                 'Content-Type': 'application/json'
             },
             method: 'PUT'
