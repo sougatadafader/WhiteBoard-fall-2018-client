@@ -782,7 +782,7 @@ export default class CourseService {
             }
         }
     }
-    static findWidgets = topicId => {
+     findWidgets = topicId => {
         for(let c in courses) {
             for(let m in courses[c].modules) {
                 for(let l in courses[c].modules[m].lessons) {

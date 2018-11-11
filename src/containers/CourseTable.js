@@ -18,7 +18,8 @@ export default class CourseTable extends Component {
 
     }
     componentDidMount = () =>{
-    this.findAllCourses();
+        //this.state.courses = this.props.courses;
+        this.findAllCourses();
     }
 
     componentDidUpdate =(prevProps) =>{

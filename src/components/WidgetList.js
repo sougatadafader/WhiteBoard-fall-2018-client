@@ -10,7 +10,11 @@ class WidgetList extends Component {
 
     constructor(props){
         super(props);
-        props.init(props.widgetsInit,props.topic)
+        console.log("Props in constructor"+ this.props.widgets)
+        this.state = {
+            widgets: []
+        }
+        //props.init(props.widgetsInit,props.topic)
 
     }
     componentDidUpdate(){
@@ -101,6 +105,7 @@ class WidgetList extends Component {
 
 
     render(){
+        console.log("Helloworld: "+this.props.widgets)
         return(
             <div>
                 <div className="mb-2 clearfix">
@@ -117,6 +122,7 @@ class WidgetList extends Component {
 
                 <ul className="list-group m-0" id="widget-list">
                     {
+
                         this.props.widgets.map((widget, index) =>
                             <li key={index} className="list-group-item widget-list-item">
                                 <div className="row mb-2">

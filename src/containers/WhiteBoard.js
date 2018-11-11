@@ -34,7 +34,6 @@ export default class WhiteBoard extends Component {
 
     findAllCourses =() =>this.courseService.findAllCourses().then(courses => this.setState({courses:courses,loggedInFlag:true}));
 
-
     loginFunc =() =>{
 
         this.setState ({loggedInFlag: true})
@@ -95,7 +94,7 @@ export default class WhiteBoard extends Component {
 
                     <div className="mt-5 pt-3">
                         {(this.state.loggedInFlag)?
-                        (<Redirect to="/course/table" />)
+                        (<Redirect to="/course/table" courses={this.state.courses}/>)
                         :
                         (<Redirect to="/login" />)}
                         <Route path="/login" render={() => <Login login={this.handleClickEvent} />}/>
@@ -112,7 +111,7 @@ export default class WhiteBoard extends Component {
                                     <CourseTable
                                        addCourse={this.addCourse}
                                        deleteCourse={this.deleteCourse}
-                                       courses={this.state.currentUser.courses}
+                                       courses={this.state.courses}
                                         userId = {this.state.currentUser}
                                     />
                                        </div>
@@ -131,7 +130,7 @@ export default class WhiteBoard extends Component {
                         <Route
                             exact
                             render={(props) =>
-                                (this.state.flag)?(
+                                (this.state.loggedInFlag)?(
                                 <CourseEditor
                                     {...props}
                                     deleteModule={this.deleteModule}

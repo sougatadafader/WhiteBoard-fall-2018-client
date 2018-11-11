@@ -2,9 +2,14 @@ import React from 'react'
 import {connect} from 'react-redux'
 import WidgetList from '../components/WidgetList'
 
-const stateToPropertyMapper = state => ({
+
+
+const stateToPropertyMapper = state => {
+    console.log(state.widgets)
+    return({
     widgets: state.widgets
-})
+
+})}
 
 
 const dispatcherToPropertyMapper = dispatch =>({
@@ -35,7 +40,7 @@ const dispatcherToPropertyMapper = dispatch =>({
         widget:widget
     }),
     loadWidgets: (topicId) => {
-        let url = "https://guarded-depths-89666.herokuapp.com/api/topic/"
+        let url = "http://localhost:9090/api/topic/"
         url += topicId
         url += "/widget"
         fetch(url,{
@@ -43,13 +48,13 @@ const dispatcherToPropertyMapper = dispatch =>({
         })
             .then(response => response.json())
             .then(widgets => dispatch({
-                    type: 'FIND_ALL_WIDGETS_FOR_TOPIC',
+                    type: 'LOAD_WIDGETS',
                     widgets: widgets
                 })
             )
     },
     updateWidget: (widgetType,widgetId,widget) => {
-        let url = "https://guarded-depths-89666.herokuapp.com/api/"
+        let url = "http://localhost:9090/api/"
         url+=widgetType
         url += "/widget/"
         url += widgetId
@@ -68,7 +73,7 @@ const dispatcherToPropertyMapper = dispatch =>({
             )
     },
     deleteWidget: (wid,widgetType) => {
-        let url = "https://guarded-depths-89666.herokuapp.com/api/"
+        let url = "http://localhost:9090/api/"
         url+=widgetType
         url+="/widget/"
         url += wid
@@ -84,7 +89,7 @@ const dispatcherToPropertyMapper = dispatch =>({
             )
     },
     createWidget: (topicId,widgetType,widget) => {
-        let url = "https://guarded-depths-89666.herokuapp.com/api/topic/"
+        let url = "http://localhost:9090/api/topic/"
         url+=topicId
         url += "/widget/"
         url+=widgetType
@@ -103,7 +108,7 @@ const dispatcherToPropertyMapper = dispatch =>({
             )
     },
     findWidget: (widgetId,widgetType) => {
-        let url = "https://guarded-depths-89666.herokuapp.com/api/"
+        let url = "http://localhost:9090/api/"
         url += widgetType
         url += "/widget/"
         url += widgetId
@@ -118,12 +123,6 @@ const dispatcherToPropertyMapper = dispatch =>({
                 })
             )
     },
-
-
-
-
-
-
 })
 
 

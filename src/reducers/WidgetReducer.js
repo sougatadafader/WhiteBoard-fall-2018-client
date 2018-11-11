@@ -61,7 +61,7 @@ const WidgetReducer = (state ,action) =>{
                 widgets: CourseService.findWidgets(state.selectedTopic).slice(0),
                 selectedTopic:state.selectedTopic
             }
-        case 'FIND_ALL_WIDGETS':
+        case 'LOAD_WIDGETS':
             return {
                 widgets: action.widgets
             }
@@ -83,7 +83,9 @@ const WidgetReducer = (state ,action) =>{
             }
 
             default:
-                return state
+                return {
+                    widgets: []
+                }
 }
 }
 

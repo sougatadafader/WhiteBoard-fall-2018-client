@@ -5,6 +5,7 @@ import LessonTabs from "../components/LessonTabs";
 import {Link} from 'react-router-dom'
 import TopicPills from "../components/TopicPills";
 import WidgetList from "../components/WidgetList";
+import CourseService from "../services/CourseService";
 
 import WidgetReducer from '../reducers/WidgetReducer'
 import WidgetListContainer from '../containers/WidgetListContainer'
@@ -17,6 +18,7 @@ const store= createStore(WidgetReducer)
 export default class CourseEditor extends Component {
     constructor(props) {
         super(props);
+        this.courseService = new CourseService();
         // retrieve courseId from the URL path parameter 'courseId'
         // the props.match.params is part of the Route library which
         // parses the URL path and names the parameters and creates
@@ -30,7 +32,8 @@ export default class CourseEditor extends Component {
             course => course.id === parseInt(courseId));
         const selectedModule = course.modules[0];
         const selectedLesson = selectedModule.lessons[0];
-        const selectedTopic = selectedLesson.topics[0]
+        const selectedTopic = selectedLesson.topics[0];
+        const widgets = this.courseService.findWidgets(selectedTopic)
 
         this.state = {
             course: course,
@@ -42,7 +45,8 @@ export default class CourseEditor extends Component {
             selectedTopicId:'',
             isEdit:false,
             isLessonEdit:false,
-            isTopicEdit:false
+            isTopicEdit:false,
+            widgets:widgets
         }
         console.log(course)
     }
@@ -435,8 +439,8 @@ export default class CourseEditor extends Component {
                         <br/>
                         {<Provider store={store}>
                             <WidgetListContainer
-                                widgetsInit={this.state.selectedTopic.widgets}
-                                topic={this.state.selectedTopic}
+                                widgetsInit={this.state.widgets}
+                                topicId={this.state.selectedTopic.id}
                                 />
                         </Provider>}
                         {/*<WidgetList widgets={this.props.findWidgets(this.state.selectedTopic)}
