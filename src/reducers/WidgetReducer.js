@@ -1,4 +1,5 @@
 import CourseService from '../services/CourseService'
+import WidgetService from '../services/CourseService'
 
 const WidgetReducer = (state ,action) =>{
     switch (action.type){

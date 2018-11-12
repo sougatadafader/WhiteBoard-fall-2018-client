@@ -40,6 +40,7 @@ const dispatcherToPropertyMapper = dispatch =>({
         widget:widget
     }),
     loadWidgets: (topicId) => {
+        console.log("The topic Id is "+topicId)
         let url = "http://localhost:9090/api/topic/"
         url += topicId
         url += "/widget"

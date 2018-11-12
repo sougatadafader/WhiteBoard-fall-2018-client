@@ -24,10 +24,9 @@ export default class CourseEditor extends Component {
         // parses the URL path and names the parameters and creates
         // the params map
         const courseId = this.props.match.params.courseId;
-        console.log(this.props)
+
         // use courseId to find the course object from the
         // courses array passed in as a property
-        console.log(this.props.courses)
         const course = this.props.courses.find(
             course => course.id === parseInt(courseId));
         const selectedModule = course.modules[0];
@@ -48,7 +47,7 @@ export default class CourseEditor extends Component {
             isTopicEdit:false,
             widgets:widgets
         }
-        console.log(course)
+
     }
     addLesson = () => {
 

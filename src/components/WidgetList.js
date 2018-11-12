@@ -17,8 +17,13 @@ class WidgetList extends Component {
         //props.init(props.widgetsInit,props.topic)
 
     }
+    componentDidMount() {
+        console.log("topic: "+ this.props.topicId)
+        this.props.loadWidgets(this.props.topicId)
+    }
     componentDidUpdate(){
-        this.props.init(this.props.widgetsInit,this.props.topic)
+        console.log("sdfffffffffff")
+
     }
 
     updateHeadingWidget = (widget) =>

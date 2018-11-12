@@ -37,7 +37,6 @@ export default class WhiteBoard extends Component {
     loginFunc =() =>{
 
         this.setState ({loggedInFlag: true})
-        console.log(this.state.loggedInFlag)
     }
 
     handleClickEvent = (user,pass) => {
@@ -50,7 +49,7 @@ export default class WhiteBoard extends Component {
         {
             UserService.login(credentials)
                 .then(
-                    user=>{console.log(user); (this.setState({
+                    user=>{ (this.setState({
                         currentUser: user
                     }))}).then(this.findAllCourses)
             /*window.location.href="/Home"*/

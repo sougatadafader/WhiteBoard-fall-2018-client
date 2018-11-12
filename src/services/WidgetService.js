@@ -18,4 +18,12 @@ export default class WidgetService {
             }
         }).then(response => response.json())
     }
+    static loadWidget = (topicId) => {
+        let url = "http://localhost:9090/api/topic/{topicId}/widget/";
+        return fetch(url, {
+            credentials: 'include',
+        }).then(response => console.log(response.json())
+        )
+    }
+
 }
