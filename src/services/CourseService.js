@@ -693,8 +693,8 @@ let courses = [
         ]
     }
 ]
-    let COURSE_API_URL = 'http://localhost:9090/api/course';
-    let COURSE_MOD_API_URL ="http://localhost:9090/api/course/{cid}";
+    let COURSE_API_URL = 'https://guarded-depths-89666.herokuapp.com/api/course';
+    let COURSE_MOD_API_URL ="https://guarded-depths-89666.herokuapp.com/api/course/{cid}";
 export default class CourseService {
     findAllCourses = () => {
         return fetch(COURSE_API_URL,{

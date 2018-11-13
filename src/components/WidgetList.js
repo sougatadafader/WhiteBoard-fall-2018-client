@@ -131,7 +131,7 @@ class WidgetList extends Component {
                         this.props.widgets.map((widget, index) =>
                             <li key={index} className="list-group-item widget-list-item">
                                 <div className="row mb-2">
-                                    <div className="col-7 h1">{widget.type} Widget</div>
+                                    <div className="col-7 h1">{widget.widgetType} Widget</div>
                                     <div className="col-5">
                                     <a  href="#" onClick={()=>this.moveUp(widget)}><i className="fa fa-arrow-up mr-2 p-2 btn-secondary"></i></a>
                                     <a  href="#" onClick={()=>this.moveDown(widget)}><i className="fa fa-arrow-down mr-2 p-2 btn-secondary"></i></a>
@@ -151,15 +151,16 @@ class WidgetList extends Component {
                                 </div>
                                 <div className="clearfix"></div>
                                 <div>
-                                    {widget.type === "HEADING" && <HeadingWidget updateHeadingWidget={this.updateHeadingWidget}
+                                    {console.log(widget)}
+                                    {widget.widgetType === "HEADING" && <HeadingWidget updateHeadingWidget={this.updateHeadingWidget}
                                                                                  widget={widget}/>}
-                                    {widget.type === "PARAGRAPH" && <ParagraphWidget updateParagraphWidget={this.updateParagraphWidget}
+                                    {widget.widgetType === "PARAGRAPH" && <ParagraphWidget updateParagraphWidget={this.updateParagraphWidget}
                                                                                      widget={widget}/>}
-                                    {widget.type === "LINK" && <LinkWidget updateLinkWidget={this.updateLinkWidget}
+                                    {widget.widgetType === "LINK" && <LinkWidget updateLinkWidget={this.updateLinkWidget}
                                                                            widget={widget}/>}
-                                    {widget.type === "IMAGE" && <ImageWidget updateImageWidget={this.updateImageWidget}
+                                    {widget.widgetType === "IMAGE" && <ImageWidget updateImageWidget={this.updateImageWidget}
                                                                              widget={widget} />}
-                                    {widget.type === "LIST" && <ListWidget updateListWidget={this.updateListWidget}
+                                    {widget.widgetType === "LIST" && <ListWidget updateListWidget={this.updateListWidget}
                                                                            widget={widget}/>}
                                 </div>
                             </li>

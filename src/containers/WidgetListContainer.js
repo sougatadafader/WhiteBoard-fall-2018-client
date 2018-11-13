@@ -41,7 +41,7 @@ const dispatcherToPropertyMapper = dispatch =>({
     }),
     loadWidgets: (topicId) => {
         console.log("The topic Id is "+topicId)
-        let url = "http://localhost:9090/api/topic/"
+        let url = "https://guarded-depths-89666.herokuapp.com/api/topic/"
         url += topicId
         url += "/widget"
         fetch(url,{
