@@ -120,7 +120,6 @@ export default class WhiteBoard extends Component {
                                render={() =>
 
                                     <div>
-                                        This is me
                                    <NavigationDefault addCourse={this.addCourse}/>
                                    <NavigationTable/>
                                     <CourseTable

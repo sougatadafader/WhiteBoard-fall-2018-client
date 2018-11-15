@@ -60,7 +60,7 @@ class WidgetList extends Component {
     {
         let newHeading = document.getElementById(widget.id+'-heading').value
         let newSize = document.getElementById(widget.id+'-size').value
-      
+
         widget.text = newHeading
         widget.size = newSize
         console.log('Before Sending : '+JSON.stringify(widget))
