@@ -21,15 +21,32 @@ export default class WhiteBoard extends Component {
     constructor(props) {
         super(props);
         this.courseService = new CourseService();
-        this.state = {
-            courses:[],
-            loggedInFlag : false,
-            currentUser:''
 
-           // courses: this.courseService.findAllCourses()
+        let courses = []
+        let loggedInFlag = false
+        let currentUser = ''
+
+        /*let user = UserService.profile()
+        console.log(user)*/
+        /*if(user != null)
+        {
+            loggedInFlag = true
+            currentUser = user
+            courses = cr
+        }*/
+        this.state = {
+            courses:courses,
+            loggedInFlag : loggedInFlag,
+            currentUser:currentUser
+
+           //courses: this.courseService.findAllCourses()
         }
+        /*if(user != null) {
+            this.findAllCourses();
+        }*/
+
     }
-    componentDidMount = () =>{}
+    componentDidMount = () =>{console.log(this.state.courses)}
         //this.findAllCourses();
 
     findAllCourses =() =>this.courseService.findAllCourses().then(courses => this.setState({courses:courses,loggedInFlag:true}));
@@ -92,10 +109,7 @@ export default class WhiteBoard extends Component {
                 <Router>
 
                     <div className="mt-5 pt-3">
-                        {(this.state.loggedInFlag)?
-                        (<Redirect to="/course/table" courses={this.state.courses}/>)
-                        :
-                        (<Redirect to="/login" />)}
+
                         <Route path="/login" render={() => <Login login={this.handleClickEvent} />}/>
                         <Route path="/Register" render={() => <Register/>}/>
                         <Route path="/profile"
@@ -104,7 +118,9 @@ export default class WhiteBoard extends Component {
                                }/>
                         <Route path="/course/table"
                                render={() =>
+
                                     <div>
+                                        This is me
                                    <NavigationDefault addCourse={this.addCourse}/>
                                    <NavigationTable/>
                                     <CourseTable
@@ -138,6 +154,10 @@ export default class WhiteBoard extends Component {
                                     createWidget = {this.createWidget}
                                 />):(<div>Empty</div>)}
                             path="/course/:courseId/edit"/>
+                        {(this.state.loggedInFlag)?
+                            (<Redirect to="/course/table" courses={this.state.courses}/>)
+                            :
+                            (<Redirect to="/login" />)}
                     </div>
                 </Router>
             </div>

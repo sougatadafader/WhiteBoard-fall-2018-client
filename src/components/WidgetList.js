@@ -12,28 +12,60 @@ class WidgetList extends Component {
         super(props);
         console.log("Props in constructor"+ this.props.widgets)
         this.state = {
-            widgets: []
+            widgets: [],
+            updated:false
         }
         //props.init(props.widgetsInit,props.topic)
-
+        this.props.loadWidgets(this.props.topicId)
     }
     componentDidMount() {
         console.log("topic: "+ this.props.topicId)
-        this.props.loadWidgets(this.props.topicId)
+
     }
     componentDidUpdate(){
-        console.log("sdfffffffffff")
+
+        if(this.state.updated) {
+            this.state.updated = false
+            this.props.loadWidgets(this.props.topicId)
+        }
+
 
     }
+    isEquivalent = (a,b) =>
+    {
+        let aProps = Object.getOwnPropertyNames(a);
+        let bProps = Object.getOwnPropertyNames(b);
 
+        // If number of properties is different,
+        // objects are not equivalent
+        if (aProps.length != bProps.length) {
+            return false;
+        }
+
+        for (let i = 0; i < aProps.length; i++) {
+            let propName = aProps[i];
+
+            // If values of same property are not equal,
+            // objects are not equivalent
+            if (a[propName] !== b[propName]) {
+                return false;
+            }
+        }
+
+        // If we made it this far, objects
+        // are considered equivalent
+        return true;
+    }
     updateHeadingWidget = (widget) =>
     {
         let newHeading = document.getElementById(widget.id+'-heading').value
         let newSize = document.getElementById(widget.id+'-size').value
-        //alert(newHeading)
+      
         widget.text = newHeading
-        widget.size = parseInt(newSize)
-        this.props.updateWidget(widget)
+        widget.size = newSize
+        console.log('Before Sending : '+JSON.stringify(widget))
+        this.state.updated = true
+        this.props.updateWidget('HEADING',widget.id,widget)
     }
     updateParagraphWidget = (widget) =>
     {
@@ -107,7 +139,13 @@ class WidgetList extends Component {
     {
         this.props.moveDown(widget)
     }
+    removeWidget = (id,type) =>
+    {
+        this.state.updated = true
+        this.props.deleteWidget(id,type,this.props.topicId)
 
+        //this.props.loadWidgets(this.props.topicId)
+    }
 
     render(){
         console.log("Helloworld: "+this.props.widgets)
@@ -141,10 +179,10 @@ class WidgetList extends Component {
                                         <option value="PARAGRAPH">Paragraph</option>
                                         <option value="LIST" >List</option>
                                         <option value="IMAGE" >Image</option>
-                                        <option value="LINK">LincreateWidgetk</option>
+                                        <option value="LINK">Link</option>
                                     </select>
                                     <button
-                                        onClick={() => this.props.deleteWidget(widget)}
+                                        onClick={() => this.removeWidget(widget.id,widget.widgetType)}
                                         className="col-1 p-1 btn btn-danger fa fa-times pull-right">
                                     </button>
                                     </div>
@@ -169,12 +207,14 @@ class WidgetList extends Component {
                     }
 
                 </ul>
-                <button className="btn btn-danger pull-right m-4" id="add-widget"  onClick={() => this.props.createWidget({
-                    id: (new Date()).getTime() + '_wid',
-                    type: 'HEADING',
-                    size: 1,
-                    text: ''
-                })}><i className="fa fa-plus"></i></button>
+                <button className="btn btn-danger pull-right m-4" id="add-widget"  onClick={() => this.props.createWidget(this.props.topicId,
+                    "HEADING",
+                    {
+                    'title': 'HEADING',
+                    'size': 'h1',
+                    'text': 'Demo Heading'
+                })
+                }><i className="fa fa-plus"></i></button>
             </div>
 
         )

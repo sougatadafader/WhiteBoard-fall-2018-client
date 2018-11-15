@@ -6,7 +6,7 @@ const HeadingWidget = ({updateHeadingWidget,widget}) =>
             <div className="form-group row">
                 <label className="col-sm-2 col-form-label">Widget Name</label>
                 <div className="col-sm-10">
-                    <input className="form-control" placeholder="Heading text" id={widget.id+'-heading'} required="" value={widget.title} onChange={()=>updateHeadingWidget(widget)}/>
+                    <input className="form-control" placeholder="Heading text" id={widget.id+'-title'} required="" value={widget.title} onChange={()=>updateHeadingWidget(widget)}/>
                 </div>
             </div>
         <div className="form-group row">

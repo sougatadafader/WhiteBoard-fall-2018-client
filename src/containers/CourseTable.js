@@ -15,14 +15,20 @@ export default class CourseTable extends Component {
 
             // courses: this.courseService.findAllCourses()
         }
+        console.log('Component Mounted')
 
     }
     componentDidMount = () =>{
         //this.state.courses = this.props.courses;
+
         this.findAllCourses();
     }
 
     componentDidUpdate =(prevProps) =>{
+        if(this.props!=prevProps)
+        {
+            console.log('Component Mounted lalala')
+        }
 /*        this.state.courses = fetch('http://localhost:9090/api/course')
             .then(response =>
                 response.json()).then(this.setState({}));*/

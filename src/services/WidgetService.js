@@ -6,6 +6,7 @@ export default class WidgetService {
                 response.json())
     };
 
+
     static createWidget = (widget, topicId) => {
 
         let url = "https://guarded-depths-89666.herokuapp.com/api/topic/{topicId}/widget/heading";

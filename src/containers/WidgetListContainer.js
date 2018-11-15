@@ -55,16 +55,17 @@ const dispatcherToPropertyMapper = dispatch =>({
             )
     },
     updateWidget: (widgetType,widgetId,widget) => {
-        let url = "http://localhost:9090/api/"
+        let url = "https://guarded-depths-89666.herokuapp.com/api/"
         url+=widgetType
         url += "/widget/"
         url += widgetId
+        console.log(widget)
         fetch(url,{
             method:'PUT',
             credentials: 'include',
             body: JSON.stringify(widget),
             headers:{
-                'Content-Type':'application/json'
+                'content-type':'application/json'
             }})
             .then(response => response.json())
             .then(widgets => dispatch({
@@ -73,33 +74,36 @@ const dispatcherToPropertyMapper = dispatch =>({
                 })
             )
     },
-    deleteWidget: (wid,widgetType) => {
-        let url = "http://localhost:9090/api/"
+    deleteWidget: (wid,widgetType,topicId) => {
+        let url = "https://guarded-depths-89666.herokuapp.com/api/"
+        //url+=topicId+"/"
+        console.log(widgetType)
         url+=widgetType
         url+="/widget/"
         url += wid
+
+
         fetch(url,{
             method:'DELETE',
-            credentials: 'include',
-            })
-            .then(response => response.json())
-            .then(widgets => dispatch({
+
+            }).then(widgets => dispatch({
                     type: 'DELETE WIDGET',
                     widgets: widgets
                 })
             )
     },
     createWidget: (topicId,widgetType,widget) => {
-        let url = "http://localhost:9090/api/topic/"
+        let url = "https://guarded-depths-89666.herokuapp.com/api/topic/"
         url+=topicId
         url += "/widget/"
         url+=widgetType
+        console.log(url)
         fetch(url,{
             method:'POST',
             credentials: 'include',
             body: JSON.stringify(widget),
             headers:{
-                'Content-Type':'application/json'
+                'content-type':'application/json'
             }})
             .then(response => response.json())
             .then(widgets => dispatch({
@@ -109,7 +113,7 @@ const dispatcherToPropertyMapper = dispatch =>({
             )
     },
     findWidget: (widgetId,widgetType) => {
-        let url = "http://localhost:9090/api/"
+        let url = "https://guarded-depths-89666.herokuapp.com/api/"
         url += widgetType
         url += "/widget/"
         url += widgetId

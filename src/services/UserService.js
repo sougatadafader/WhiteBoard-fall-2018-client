@@ -36,10 +36,20 @@ export default class UserService {
         let url ="https://guarded-depths-89666.herokuapp.com/api/profile";
         return fetch(url, {
             credentials: 'include'
-        })
-            .then(response =>
-                response.json())};
+        }).then(response => response.json())};
 
+    static update = (user,userId) =>{
+        let url ="https://guarded-depths-89666.herokuapp.com/api/user/";
+        url+=userId;
+        return fetch(url,{
+            method:'PUT',
+            credentials: 'include',
+            body: JSON.stringify(user),
+            headers:{
+                'Content-Type':'application/json'
+            }
+        }).then(response => response.json())
+    }
 
     static logout =() =>{
         let url ="https://guarded-depths-89666.herokuapp.com/api/logout";

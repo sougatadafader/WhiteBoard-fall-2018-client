@@ -22,6 +22,7 @@ class Login extends Component {
 
 
 
+
     render(){
 
 
@@ -46,9 +47,9 @@ class Login extends Component {
                                    onChange = {(event) => this.setState({password:event.target.value})}
                             />
                         </div>
-                        <a onClick={(event) => this.props.login(this.state.username,this.state.password)} className="btn btn-primary mr-2 text-light">Login</a>
-                        <Link to={"/register"}><a
-                            className="btn btn-primary ml-2 text-light">Register</a></Link>
+                        <span onClick={(event) => this.props.login(this.state.username,this.state.password)} className="btn btn-primary mr-2 text-light">Login</span>
+                        <Link to={"/register"}><span
+                            className="btn btn-primary ml-2 text-light">Register</span></Link>
                     </form>
                 </div>
                 <div className="card-footer text-muted">

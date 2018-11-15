@@ -23,6 +23,7 @@ export default class CourseEditor extends Component {
         // the props.match.params is part of the Route library which
         // parses the URL path and names the parameters and creates
         // the params map
+        console.log(this.props);
         const courseId = this.props.match.params.courseId;
 
         // use courseId to find the course object from the
@@ -418,14 +419,15 @@ export default class CourseEditor extends Component {
                     <div className="col-8">
                         <input type="text" id="lesson-add" className="btn border-dark"/>
                         <button className="btn btn-primary m-1"  onClick={this.addLesson} id="lesson-add-btn">Add Lesson</button>
-                        <LessonTabs
+                        {(this.state.selectedModule.lessons.length>0)?
+                            (<LessonTabs
                             selectLesson={this.selectLesson}
                             selectedLesson={this.state.selectedLesson}
                             deleteLesson={this.deleteLesson}
                             lessons={this.state.selectedModule.lessons}
-                            editLesson={this.editLesson}
-                        />
-                        <TopicPills
+                            editLesson={this.editLesson}/>):(<div>Empty</div>)}
+                        {(this.state.selectedModule.lessons.length>0)?
+                            (<TopicPills
                             selectedTopic={this.state.selectedTopic}
                             deleteTopic={this.deleteTopic}
                             topics={this.state.selectedLesson.topics}
@@ -434,7 +436,7 @@ export default class CourseEditor extends Component {
                             selectTopic = {this.selectTopic}
                             findWidgets = {this.props.findWidgets}
                             createWidget = {this.props.createWidget}
-                        />
+                        />):(<div>Empty</div>)}
                         <br/>
                         {<Provider store={store}>
                             <WidgetListContainer
