@@ -19,7 +19,6 @@ export default class LessonService {
         }).then(response => response.json())
     }
     static findLessonById = (lid )=>{
-
         let url ="https://guarded-depths-89666.herokuapp.com/api/topic/{lid}";
         return fetch(url,{
             credentials: 'include'
